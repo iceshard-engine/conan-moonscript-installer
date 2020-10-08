@@ -16,7 +16,7 @@ jobs:
         ~/.local/bin/conan remote add conan-iceshard https://conan.iceshard.net/
     - name: Create package
       run: |
-        ~/.local/bin/conan create . premake-installer/5.0.0@iceshard/stable
+        ~/.local/bin/conan create . moonscript-installer/0.5.0@iceshard/stable
     - name: Success
       run: |
         echo 'Validation success'
@@ -33,7 +33,7 @@ jobs:
         conan remote add conan-iceshard https://conan.iceshard.net/
     - name: Create package
       run: |
-        conan create . premake-installer/5.0.0@iceshard/stable
+        conan create . moonscript-installer/0.5.0@iceshard/stable
     - name: Success
       run: |
         echo 'Validation success'
