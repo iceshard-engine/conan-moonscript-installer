@@ -77,7 +77,7 @@ class MoonscriptInstallerConan(ConanFile):
             self.env_info.MOON_SCRIPT = os.path.join(self.package_folder, "scripts/moonscript/bin/moon")
             self.env_info.MOONC_SCRIPT = os.path.join(self.package_folder, "scripts/moonscript/bin/moonc")
 
-        elif self.settings.is == "Windows":
+        elif self.settings.os == "Windows":
             self.env_info.MOON_SCRIPT = os.path.join(self.package_folder, "scripts/moonscript/bin/moon.bat")
             self.env_info.MOONC_SCRIPT = os.path.join(self.package_folder, "scripts/moonscript/bin/moonc.bat")
 
