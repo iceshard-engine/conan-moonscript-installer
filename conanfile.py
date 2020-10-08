@@ -22,7 +22,8 @@ class MoonscriptInstallerConan(ConanFile):
         "bin/moon.sh",
         "bin/moonc.sh",
         "bin/moon_unix",
-        "bin/moon_hotfixed",
+        "bin/moonc_unix",
+        "bin/moon_windows",
     ]
 
     folder_names = {
@@ -63,7 +64,7 @@ class MoonscriptInstallerConan(ConanFile):
         copyfile("bin/moonc_unix", "bin/moonc")
         self.copy("moon", src="bin", dst="scripts/moonscript/bin", keep_path=False)
         self.copy("moonc", src="bin", dst="scripts/moonscript/bin", keep_path=False)
-        self.copy("moon_hotfixed", src="bin", dst="scripts/moonscript/bin", keep_path=False)
+        self.copy("moon_windows", src="bin", dst="scripts/moonscript/bin", keep_path=False)
 
 
     def package_info(self):
