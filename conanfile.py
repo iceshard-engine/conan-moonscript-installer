@@ -62,6 +62,8 @@ class MoonscriptInstallerConan(ConanFile):
 
         copyfile("bin/moon_unix", "bin/moon")
         copyfile("bin/moonc_unix", "bin/moonc")
+        self.run("chmod 755 bin/moon")
+        self.run("chmod 755 bin/moonc")
         self.copy("moon", src="bin", dst="scripts/moonscript/bin", keep_path=False)
         self.copy("moonc", src="bin", dst="scripts/moonscript/bin", keep_path=False)
         self.copy("moon_windows", src="bin", dst="scripts/moonscript/bin", keep_path=False)
