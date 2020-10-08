@@ -9,6 +9,8 @@ class MoonscriptInstallerConan(ConanFile):
     description = "Installer for the moonscript wrapper for lua. Provides the moon and moonc commane line tools."
     url = "https://github.com/leafo/moonscript"
 
+    settings = "os"
+
     requires = [
         "lua/5.1.5@iceshard/stable",
         "lua-filesystem/1.8.0@iceshard/stable",
@@ -62,8 +64,6 @@ class MoonscriptInstallerConan(ConanFile):
 
         copyfile("bin/moon_unix", "bin/moon")
         copyfile("bin/moonc_unix", "bin/moonc")
-        self.run("chmod 755 bin/moon")
-        self.run("chmod 755 bin/moonc")
         self.copy("moon", src="bin", dst="scripts/moonscript/bin", keep_path=False)
         self.copy("moonc", src="bin", dst="scripts/moonscript/bin", keep_path=False)
         self.copy("moon_windows", src="bin", dst="scripts/moonscript/bin", keep_path=False)
@@ -72,6 +72,14 @@ class MoonscriptInstallerConan(ConanFile):
     def package_info(self):
         # Enviroment info
         self.env_info.PATH.append(os.path.join(self.package_folder, "scripts/moonscript/bin"))
+
+        if self.settings.os == "Linux":
+            self.env_info.MOON_SCRIPT = os.path.join(self.package_folder, "scripts/moonscript/bin/moon")
+            self.env_info.MOONC_SCRIPT = os.path.join(self.package_folder, "scripts/moonscript/bin/moonc")
+
+        elif self.settings.is == "Windows":
+            self.env_info.MOON_SCRIPT = os.path.join(self.package_folder, "scripts/moonscript/bin/moon.bat")
+            self.env_info.MOONC_SCRIPT = os.path.join(self.package_folder, "scripts/moonscript/bin/moonc.bat")
 
         # Lua paths info
         for name in self.folder_names:
