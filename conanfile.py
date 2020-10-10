@@ -35,6 +35,12 @@ class MoonscriptInstallerConan(ConanFile):
         "jsonlua": "jsonlua-source",
     }
 
+    def build_id(self):
+        del self.info_build.settings.os
+
+    def package_id(self):
+        del self.info.settings.os
+
     def source(self):
         source_info = self.conan_data["sources"][self.version]
         if source_info != None:
