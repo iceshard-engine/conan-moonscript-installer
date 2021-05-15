@@ -16,7 +16,7 @@ jobs:
         ~/.local/bin/conan remote add conan-iceshard https://conan.iceshard.net/
     - name: Create package
       run: |
-        ~/.local/bin/conan create . moonscript-installer/0.5.0@iceshard/stable
+        ~/.local/bin/conan create . moonscript-installer/0.5.0@iceshard/stable --profile clang-9.0-linux-x86_64
     - name: Success
       run: |
         echo 'Validation success'
